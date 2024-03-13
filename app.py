@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, Response
-from telegram import Update, Bot
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram import Bot
 
 app = Flask(__name__)
 
@@ -46,10 +45,6 @@ def notify():
         bot.send_message(chat_id=user_chat_id, text=message, parse_mode='MarkdownV2')
       
   return Response(status=200)
-
-updater = Updater(TELEGRAM_API_TOKEN)
-# Start the bot
-updater.start_polling()
 
 if __name__ == '__main__':
     app.run()
